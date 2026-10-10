@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+coverage/
+.env
+.env.*
+!.env.example
+
+# Java / Maven
+target/
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Local application secrets
+application-local.properties
+application-secrets.properties
+
+# Logs
+*.log

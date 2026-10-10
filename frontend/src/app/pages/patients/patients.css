@@ -1,0 +1,691 @@
+:host {
+  display: block;
+
+  --background: #f7f8fa;
+  --surface: #ffffff;
+
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #eff6ff;
+
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+
+  --border: #e5e7eb;
+  --border-light: #f1f5f9;
+
+  --danger: #dc2626;
+  --danger-light: #fef2f2;
+
+  --warning-light: #fff7ed;
+
+  --radius-small: 8px;
+  --radius-medium: 12px;
+  --radius-large: 16px;
+
+  background: var(--background);
+  min-height: 100vh;
+}
+
+
+/* ===============================
+   PAGE
+   =============================== */
+
+.patients-page {
+  padding: 32px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+
+/* ===============================
+   HEADER
+   =============================== */
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+
+  margin-bottom: 30px;
+}
+
+.page-eyebrow {
+  margin: 0 0 6px;
+
+  color: var(--primary);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.page-description {
+  margin: 8px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* ===============================
+   BUTTONS
+   =============================== */
+
+button {
+  font-family: inherit;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: none;
+
+  padding: 11px 18px;
+
+  border-radius: var(--radius-small);
+
+  background: var(--primary);
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.primary-button:hover {
+  background: var(--primary-dark);
+
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.18);
+}
+
+.primary-button:active {
+  transform: translateY(1px);
+}
+
+.button-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.secondary-button {
+  padding: 10px 16px;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-small);
+
+  background: var(--surface);
+  color: var(--text-primary);
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.secondary-button:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+
+/* ===============================
+   SUMMARY CARDS
+   =============================== */
+
+.summary-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 20px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-medium);
+
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.summary-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: var(--primary-light);
+
+  font-size: 20px;
+}
+
+.summary-label {
+  margin: 0 0 4px;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+}
+
+.summary-card h2 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: 24px;
+}
+
+
+/* ===============================
+   PATIENT CARD
+   =============================== */
+
+.patients-card {
+  overflow: hidden;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+
+/* ===============================
+   TOOLBAR
+   =============================== */
+
+.toolbar {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 20px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.search-wrapper {
+  position: relative;
+
+  flex: 1;
+
+  max-width: 500px;
+}
+
+.search-icon {
+  position: absolute;
+
+  top: 50%;
+  left: 14px;
+
+  transform: translateY(-50%);
+
+  color: var(--text-muted);
+
+  font-size: 20px;
+
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 11px 14px 11px 42px;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-small);
+
+  background: #ffffff;
+
+  color: var(--text-primary);
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.toolbar-actions {
+  display: flex;
+
+  gap: 10px;
+}
+
+.filter-select {
+  min-width: 150px;
+
+  padding: 10px 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-small);
+
+  background: var(--surface);
+
+  color: var(--text-primary);
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+
+/* ===============================
+   TABLE
+   =============================== */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.patients-table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.patients-table th {
+  padding: 13px 20px;
+
+  background: #f8fafc;
+
+  border-bottom: 1px solid var(--border);
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-align: left;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.patients-table td {
+  padding: 17px 20px;
+
+  border-bottom: 1px solid var(--border-light);
+
+  vertical-align: middle;
+}
+
+.patients-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.patients-table tbody tr:hover {
+  background: #fafcff;
+}
+
+.patients-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* ===============================
+   PATIENT
+   =============================== */
+
+.patient-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.patient-avatar {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--primary-light);
+  color: var(--primary);
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.patient-name {
+  margin: 0 0 3px;
+
+  color: var(--text-primary);
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.patient-id {
+  color: var(--text-muted);
+
+  font-size: 12px;
+}
+
+.table-primary-text {
+  color: #374151;
+
+  font-size: 14px;
+}
+
+
+/* ===============================
+   ACTION BUTTONS
+   =============================== */
+
+.actions-heading {
+  text-align: right !important;
+}
+
+.row-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 7px;
+}
+
+.action-button {
+  padding: 7px 10px;
+
+  border: 1px solid transparent;
+
+  border-radius: 7px;
+
+  background: transparent;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.15s ease;
+}
+
+.view-button {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.view-button:hover {
+  background: #dbeafe;
+}
+
+.edit-button {
+  color: #92400e;
+  background: var(--warning-light);
+}
+
+.edit-button:hover {
+  background: #ffedd5;
+}
+
+.delete-button {
+  color: var(--danger);
+  background: var(--danger-light);
+}
+
+.delete-button:hover {
+  background: #fee2e2;
+}
+
+
+/* ===============================
+   TABLE FOOTER
+   =============================== */
+
+.table-footer {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 16px 20px;
+
+  border-top: 1px solid var(--border);
+}
+
+.table-footer p {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 13px;
+}
+
+.pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+.pagination-button,
+.pagination-number {
+  min-height: 34px;
+
+  padding: 7px 11px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 7px;
+
+  background: var(--surface);
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.pagination-number.active {
+  border-color: var(--primary);
+
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.pagination-button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+
+/* ===============================
+   EMPTY STATE
+   =============================== */
+
+.empty-state {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 70px 30px;
+
+  text-align: center;
+}
+
+.empty-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+
+  margin-bottom: 18px;
+
+  border-radius: 50%;
+
+  background: var(--primary-light);
+
+  font-size: 26px;
+}
+
+.empty-state h2 {
+  margin: 0 0 8px;
+
+  color: var(--text-primary);
+
+  font-size: 20px;
+}
+
+.empty-state p {
+  max-width: 440px;
+
+  margin: 0 0 22px;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width: 1000px) {
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-wrapper {
+    max-width: none;
+  }
+
+  .toolbar-actions {
+    width: 100%;
+  }
+
+  .filter-select {
+    flex: 1;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .patients-page {
+    padding: 20px 14px;
+  }
+
+  .page-header {
+    flex-direction: column;
+  }
+
+  .page-header .primary-button {
+    width: 100%;
+  }
+
+  .toolbar-actions {
+    flex-direction: column;
+  }
+
+  .filter-select,
+  .secondary-button {
+    width: 100%;
+  }
+
+  .table-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .patients-table th,
+  .patients-table td {
+    padding: 14px;
+  }
+
+}

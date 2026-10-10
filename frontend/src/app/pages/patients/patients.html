@@ -1,0 +1,288 @@
+<!-- <h1>Patients</h1>
+
+<p>Patient count: {{ patients().length }}</p>
+
+@for (patient of patients(); track patient.id) {
+  <div>
+    <h3>{{ patient.name }}</h3>
+    <p>Date of Birth: {{ patient.dateOfBirth }}</p>
+    <p>Phone: {{ patient.phone }}</p>
+    <p>Email: {{ patient.email }}</p>
+  </div>
+} @empty {
+  <p>No patients found.</p>
+} -->
+
+<div class="patients-page">
+
+  <!-- Header -->
+  <header class="page-header">
+    <div>
+      <p class="page-eyebrow">Patient Management</p>
+      <h1>Patients</h1>
+      <p class="page-description">
+        Manage patient information, contact details and healthcare records.
+      </p>
+    </div>
+
+    <button class="primary-button" type="button">
+      <span class="button-icon">+</span>
+      Add Patient
+    </button>
+  </header>
+
+
+  <!-- Summary -->
+  <section class="summary-grid">
+
+    <div class="summary-card">
+      <div class="summary-icon">
+        👥
+      </div>
+
+      <div>
+        <p class="summary-label">Total Patients</p>
+        <h2>{{ patients().length }}</h2>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-icon">
+        📅
+      </div>
+
+      <div>
+        <p class="summary-label">Appointments Today</p>
+        <h2>0</h2>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-icon">
+        ✨
+      </div>
+
+      <div>
+        <p class="summary-label">New This Month</p>
+        <h2>0</h2>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- Main Patient Section -->
+  <section class="patients-card">
+
+    <!-- Search / Filters -->
+    <div class="toolbar">
+
+      <div class="search-wrapper">
+        <span class="search-icon">⌕</span>
+
+        <input
+          type="search"
+          placeholder="Search by name, email or phone..."
+          class="search-input"
+        />
+      </div>
+
+      <div class="toolbar-actions">
+
+        <select class="filter-select">
+          <option value="">All patients</option>
+          <option value="recent">Recently added</option>
+          <option value="oldest">Oldest records</option>
+        </select>
+
+        <button class="secondary-button" type="button">
+          Filter
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- Table -->
+    @if (patients().length > 0) {
+
+      <div class="table-wrapper">
+
+        <table class="patients-table">
+
+          <thead>
+            <tr>
+              <th>Patient</th>
+              <th>Date of Birth</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th class="actions-heading">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @for (patient of patients(); track patient.id) {
+
+              <tr>
+
+                <!-- Patient -->
+                <td>
+                  <div class="patient-info">
+
+                    <div class="patient-avatar">
+                      {{ patient.name.charAt(0).toUpperCase() }}
+                    </div>
+
+                    <div>
+                      <p class="patient-name">
+                        {{ patient.name }}
+                      </p>
+
+                      <span class="patient-id">
+                        Patient #{{ patient.id }}
+                      </span>
+                    </div>
+
+                  </div>
+                </td>
+
+
+                <!-- DOB -->
+                <td>
+                  <span class="table-primary-text">
+                    {{ patient.dateOfBirth }}
+                  </span>
+                </td>
+
+
+                <!-- Phone -->
+                <td>
+                  <span class="table-primary-text">
+                    {{ patient.phone }}
+                  </span>
+                </td>
+
+
+                <!-- Email -->
+                <td>
+                  <span class="table-primary-text">
+                    {{ patient.email }}
+                  </span>
+                </td>
+
+
+                <!-- Actions -->
+                <td>
+
+                  <div class="row-actions">
+
+                    <button
+                      class="action-button view-button"
+                      type="button"
+                      title="View patient"
+                    >
+                      View
+                    </button>
+
+                    <button
+                      class="action-button edit-button"
+                      type="button"
+                      title="Edit patient"
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      class="action-button delete-button"
+                      type="button"
+                      title="Delete patient"
+                    >
+                      Delete
+                    </button>
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- Footer / Pagination -->
+      <div class="table-footer">
+
+        <p>
+          Showing
+          <strong>{{ patients().length }}</strong>
+          patient(s)
+        </p>
+
+        <div class="pagination">
+
+          <button
+            class="pagination-button"
+            type="button"
+            disabled
+          >
+            Previous
+          </button>
+
+          <button
+            class="pagination-number active"
+            type="button"
+          >
+            1
+          </button>
+
+          <button
+            class="pagination-button"
+            type="button"
+            disabled
+          >
+            Next
+          </button>
+
+        </div>
+
+      </div>
+
+    } @else {
+
+      <!-- Empty State -->
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          👤
+        </div>
+
+        <h2>No patients found</h2>
+
+        <p>
+          There are currently no patients registered in HealthDesk.
+          Add your first patient to get started.
+        </p>
+
+        <button
+          class="primary-button"
+          type="button"
+        >
+          <span class="button-icon">+</span>
+          Add First Patient
+        </button>
+
+      </div>
+
+    }
+
+  </section>
+
+</div>
