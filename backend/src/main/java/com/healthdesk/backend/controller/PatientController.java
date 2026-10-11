@@ -1,7 +1,10 @@
 package com.healthdesk.backend.controller;
 
+import com.healthdesk.backend.dto.PatientRequest;
 import com.healthdesk.backend.entity.Patient;
 import com.healthdesk.backend.service.PatientService;
+
+import jakarta.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/patients")
 @CrossOrigin(origins = "http://localhost:4200")
-
 public class PatientController {
 
     private final PatientService patientService;
@@ -33,8 +35,8 @@ public class PatientController {
     }
 
     @PostMapping
-    public Patient createPatient(@RequestBody Patient patient) {
-        return patientService.createPatient(patient);
+    public Patient createPatient(@Valid @RequestBody PatientRequest request) {
+        return patientService.createPatient(request);
     }
 
     @DeleteMapping("/{id}")

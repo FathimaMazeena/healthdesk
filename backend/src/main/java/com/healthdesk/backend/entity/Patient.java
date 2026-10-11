@@ -2,6 +2,7 @@ package com.healthdesk.backend.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "patients")
@@ -18,6 +19,8 @@ public class Patient {
     private String phone;
 
     private String email;
+
+    private LocalDateTime createdAt;
 
     public Patient() {
     }
@@ -67,5 +70,14 @@ public class Patient {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+    this.createdAt = LocalDateTime.now();
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 }

@@ -1,5 +1,6 @@
 package com.healthdesk.backend.service;
 
+import com.healthdesk.backend.dto.PatientRequest;
 import com.healthdesk.backend.entity.Patient;
 import com.healthdesk.backend.repository.PatientRepository;
 import org.springframework.stereotype.Service;
@@ -24,9 +25,18 @@ public class PatientService {
         return patientRepository.findById(id);
     }
 
-    public Patient createPatient(Patient patient) {
-        return patientRepository.save(patient);
-    }
+
+    public Patient createPatient(PatientRequest request) {
+
+    Patient patient = new Patient();
+
+    patient.setName(request.name());
+    patient.setDateOfBirth(request.dateOfBirth());
+    patient.setPhone(request.phone());
+    patient.setEmail(request.email());
+
+    return patientRepository.save(patient);
+}
 
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);
